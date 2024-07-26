@@ -71,7 +71,11 @@ public enum Socks5Tunnel {
         case .file(let path):
              NSLog("call hev_socks5_tunnel_main")
             
-            NSLog("config path: \(String(cString: path.path.cString(using: .utf8)))")
+              if let cString = path.path.cString(using: .utf8) {
+                NSLog("config path: \(String(cString: cString))")
+            } else {
+                NSLog("Failed to convert config file path to C string")     
+            }
             
             return hev_socks5_tunnel_main(path.path.cString(using: .utf8), fileDescriptor)
         case .string(let content):

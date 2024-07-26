@@ -71,8 +71,8 @@ public enum Socks5Tunnel {
         case .file(let path):
              NSLog("call hev_socks5_tunnel_main")
             
-            NSLog(fileDescriptor)
-            NSLog(path.path.cString(using: .utf8))
+            NSLog("config path: \(String(cString: path.path.cString(using: .utf8)))")
+            
             return hev_socks5_tunnel_main(path.path.cString(using: .utf8), fileDescriptor)
         case .string(let content):
              NSLog("call hev_socks5_tunnel_main_from_str")

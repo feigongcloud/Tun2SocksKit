@@ -66,6 +66,7 @@ public enum Socks5Tunnel {
              NSLog("Failed to get tunnel file descriptor -1")
             return -1
         }
+         NSLog("success to get tunnel file descriptor: \(fileDescriptor)")
          NSLog("success to get tunnel file descriptor")
         switch config {
         case .file(let path):

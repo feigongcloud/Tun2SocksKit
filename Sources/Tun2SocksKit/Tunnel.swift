@@ -70,6 +70,7 @@ public enum Socks5Tunnel {
         switch config {
         case .file(let path):
              NSLog("call hev_socks5_tunnel_main")
+            NSLog("hello",path.path.cString(using: .utf8),fileDescriptor)
             return hev_socks5_tunnel_main(path.path.cString(using: .utf8), fileDescriptor)
         case .string(let content):
              NSLog("call hev_socks5_tunnel_main_from_str")

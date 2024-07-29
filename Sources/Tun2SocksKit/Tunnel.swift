@@ -1,6 +1,7 @@
 import Foundation
 import Tun2SocksKitC
 import HevSocks5Tunnel
+import NetworkExtension
 
 public enum Socks5Tunnel {
 
@@ -52,6 +53,7 @@ public enum Socks5Tunnel {
     }
     
     public static func run(withConfig config: Config, completionHandler: @escaping (Int32) -> ()) {
+           NSLog("into run  completionHandler1 ")
         DispatchQueue.global(qos: .userInitiated).async { [completionHandler] () in
             let code: Int32 = Socks5Tunnel.run(withConfig: config)
             completionHandler(code)
@@ -66,6 +68,17 @@ public enum Socks5Tunnel {
              NSLog("Failed to get tunnel file descriptor -1")
             return -1
         }
+          // 检查接口状态并记录日志
+                  if let tunFd = (self.packetFlow.value(forKeyPath: "socket.fileDescriptor") as? NSNumber)?.int32Value {
+                      if fcntl(tunFd, F_GETFD) != -1 {
+                          NSLog("Tunnel1 file descriptor \(tunFd) is valid")
+                      } else {
+                          NSLog("Tunnel1 file descriptor \(tunFd) is not valid")
+                      }
+                  } else {
+                      NSLog("Failed1 to get tunnel file descriptor")
+                  }
+        
          NSLog("success to get tunnel file descriptor: \(fileDescriptor)")
          NSLog("success to get tunnel file descriptor")
         switch config {

@@ -55,7 +55,8 @@ public enum Socks5Tunnel {
            NSLog("into run  completionHandler1 ")
         DispatchQueue.global(qos: .userInitiated).async { [completionHandler] () in
             let code: Int32 = Socks5Tunnel.run(withConfig: config)
-            completionHandler(code)
+            NSLog("Socks5Tunnel run  result \(code)")              
+          //  completionHandler(code)
         }
     }
 

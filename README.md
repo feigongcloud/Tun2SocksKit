@@ -1,4 +1,4 @@
-# Tun2SocksKit-sjy-1
+# Tun2SocksKit-sjy
 
 
 This repository is a wrapper and a build workflow for [hev-socks5-tunnel](https://github.com/heiher/hev-socks5-tunnel)

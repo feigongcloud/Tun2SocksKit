@@ -10,8 +10,8 @@ struct ctl_info {
     char        ctl_name[96];
 };
 struct sockaddr_ctl {
-    uchar      sc_len;
-    uchar      sc_family;
+    unsigned char      sc_len;
+    unsigned char      sc_family;
     uint16_t   ss_sysaddr;
     uint32_t   sc_id;
     uint32_t   sc_unit;

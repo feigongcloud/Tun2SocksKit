@@ -1,5 +1,4 @@
 import Foundation
-import Darwin
 import Tun2SocksKitC
 import HevSocks5Tunnel
 

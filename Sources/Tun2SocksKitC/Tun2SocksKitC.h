@@ -5,11 +5,11 @@
 
 #define CTLIOCGINFO 0xc0644e03UL
 
-struct my_ctl_info {
+struct ctl_info {
     uint32_t   ctl_id;
     char        ctl_name[96];
 };
-struct my_sockaddr_ctl {
+struct sockaddr_ctl {
     unsigned char      sc_len;
     unsigned char      sc_family;
     uint16_t   ss_sysaddr;

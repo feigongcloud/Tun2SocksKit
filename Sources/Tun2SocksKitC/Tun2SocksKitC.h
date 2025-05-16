@@ -6,16 +6,16 @@
 #define CTLIOCGINFO 0xc0644e03UL
 
 struct ctl_info {
-    uint32_t   ctl_id;
+    u_int32_t   ctl_id;
     char        ctl_name[96];
 };
 struct sockaddr_ctl {
-    unsigned char      sc_len;
-    unsigned char      sc_family;
-    uint16_t   ss_sysaddr;
-    uint32_t   sc_id;
-    uint32_t   sc_unit;
-    uint32_t   sc_reserved[5];
+    u_char char      sc_len;
+    u_char char      sc_family;
+    u_int16_t   ss_sysaddr;
+    u_int32_t   sc_id;
+    u_int32_t   sc_unit;
+    u_int32_t   sc_reserved[5];
 };
 
 #endif /* Tun2SocksKitC_H */

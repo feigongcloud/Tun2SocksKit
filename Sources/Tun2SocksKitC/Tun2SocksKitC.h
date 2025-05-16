@@ -1,7 +1,7 @@
 #ifndef Tun2SocksKitC_H
 #define Tun2SocksKitC_H
 
-#include <stdint.h>
+#include <sys/types.h>
 
 #define CTLIOCGINFO 0xc0644e03UL
 

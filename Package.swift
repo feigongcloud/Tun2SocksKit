@@ -21,13 +21,18 @@ let package = Package(
         dependencies: ["HevSocks5Tunnel", "Tun2SocksKitC"]
     ),
     .target(
-        name: "Tun2SocksKitC",
-        publicHeadersPath: "."
+         name: "Tun2SocksKitC",
+          dependencies: ["HevSocks5Tunnel"],
+          path: "Sources/Tun2SocksKitC",
+          publicHeadersPath: ".",
+          cSettings: [
+              .headerSearchPath(".")
+          ]
     ),
     .binaryTarget(
         name: "HevSocks5Tunnel",
-        url: "https://github.com/feigongcloud/Tun2SocksKit/releases/download/tunsocks5-0x89-v2/HevSocks5Tunnel.xcframework.zip",
-        checksum: "333c2a382d7038a81dd0e07f2bd5bcdb18714cc61e163f3b9aabdbf3474a57ed"
+        url: "https://github.com/feigongcloud/Tun2SocksKit/releases/download/tunsocks5-0x89-vp/HevSocks5Tunnel.xcframework.zip",
+        checksum: "4c8bfcdb6d5b603abc584765bb521efc86ff4a56fcb2f42682f59375aa15056e"
     )
   ]
 )

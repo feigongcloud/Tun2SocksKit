@@ -2,6 +2,26 @@ import Foundation
 import Tun2SocksKitC
 import HevSocks5Tunnel
 
+// MARK: - Swift callback (C → Swift)
+
+@_cdecl("onNewConnection")
+func onNewConnection(_ ip: UnsafePointer<CChar>?, _ port: Int32) {
+    guard let ip = ip else { return }
+    let address = String(cString: ip)
+    NSLog("[Tun2SocksKit] New connection from \(address):\(port)")
+
+    // 通知上层逻辑（例如 PacketTunnelProvider 做分流）
+    NotificationCenter.default.post(
+        name: .newConnectionDetected,
+        object: nil,
+        userInfo: ["ip": address, "port": port]
+    )
+}
+
+extension Notification.Name {
+    static let newConnectionDetected = Notification.Name("newConnectionDetected")
+}
+
 public enum Socks5Tunnel {
 
     public enum Config {
@@ -49,6 +69,12 @@ public enum Socks5Tunnel {
             }
         }
         return nil
+    }
+
+      /// 注册底层回调（必须先调用）
+    public static func initializeTunnel() {
+        Tun2SocksKitC_SetOnNewConnection(onNewConnection)
+        NSLog("[Tun2SocksKit] onNewConnection callback registered")
     }
     
     public static func run(withConfig config: Config, completionHandler: @escaping (Int32) -> ()) {

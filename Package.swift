@@ -27,7 +27,7 @@ let package = Package(
     .binaryTarget(
         name: "HevSocks5Tunnel",
         url: "https://github.com/feigongcloud/Tun2SocksKit/releases/download/tunsocks5-0x8A-v1/HevSocks5Tunnel.xcframework.zip",
-        checksum: "d55005d83e4a3a0d5cfe55789c6874650e7549c42ecec9c2d3d543d902702b10"
+        checksum: "bbf7b3bed3dcff7579b01378e360d4c550d11c6ec74f824dc34f763b0d98d28d"
     )
   ]
 )
